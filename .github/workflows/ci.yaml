@@ -7,7 +7,7 @@ jobs:
   build:
 
     name: Model Training on Python
-    runs-on: ubuntu-latest
+    run-on: ubuntu-latest
 
     strategy:
       matrix:
