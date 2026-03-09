@@ -1,0 +1,33 @@
+name: To test land values
+on:
+  push:
+      branches: [main]
+  pull_request:
+      branches: [main]
+jobs:
+   job-name:
+     name: models running on python 
+     runs-on: ubuntu-latest
+     stratergy:
+         matrix:
+            python: [3.11,3.12]
+     steps:
+       - name: checkout
+         uses: actions/checkout@v4
+       - name: Setup Python
+         uses: actions/setup-python@v4
+         with:
+            python-version : ${{ matrix.python }}
+       - name: upgrade pip
+         run: python -m pip install  --upgrade  pip setuptools wheel 
+       - name: install dependecies
+         run: python -m pip install -r requirement.txt
+       - name: run model
+         run: |
+            python train.py
+            ls -la artifacts
+       - name: upload-artifacts
+         uses: actions/upload-artifact@v4
+         with:
+          name: ml-artifactis-${{ matrix.python }}-${{ github.run_id }}
+          path: artifact
