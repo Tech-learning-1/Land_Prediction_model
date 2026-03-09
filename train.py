@@ -29,7 +29,7 @@ def main ():
    #Train the model 
    model.fit(x_train,y_train)
 
-   directory = BASE_DIR / "artifactory"
+   directory = BASE_DIR / "artifacts"
    directory.mkdir(exist_ok=True)
    model_path = directory/"land_prediction.pkl"
    joblib.dump(model,model_path)
