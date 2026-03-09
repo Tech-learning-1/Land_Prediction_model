@@ -4,3 +4,4 @@ joblib
 argparse
 numpy
 pathlib
+scikit-learn
