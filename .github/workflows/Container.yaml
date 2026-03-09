@@ -1,16 +1,16 @@
 name: Building the container for Model
 on: 
   push: 
-     brnaches: [ "main" ]
+     branches: [ "main" ]
 jobs:
   docker:
      name: build container
-     runs_on: ubuntu-latest
+     run-on: ubuntu-latest
      steps:
        - name: checkout
          uses: actions/checkout@v4
        - name: docker login
-         uses: docker/login-actions@v3
+         uses: docker/login-action@v3
          with: 
            username: ${{ secrets.DOCKER_PASSWORD }}
            password: ${{ secrets.DOCKER_USERNAME }}
